@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - MarketPulse</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; margin: 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        h1 { color: #333; }
+        h2 { color: #555; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        p { margin-bottom: 1em; }
+        strong { font-weight: bold; }
+        a { color: #0066cc; }
+        ul { margin-bottom: 1em; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+    </style>
+</head>
+<body>
+
+    <h1>Privacy Policy for MarketPulse</h1>
+
+    <p><strong>Effective Date:</strong> February 6, 2026</p>
+
+    <h2>1. Introduction</h2>
+    <p>Welcome to MarketPulse (the "Application"), provided by Anaxares ("we," "us," or "our"). We are committed to respecting your privacy. This Privacy Policy explains our practices concerning the information we collect and how we use it in connection with your use of the Application. Our contact email for privacy inquiries is <a href="mailto:jb-it@gmx.de">jb-it@gmx.de</a>.</p>
+
+    <h2>2. What the Application Does</h2>
+    <p>MarketPulse connects to our backend server via WebSocket (Socket.io) to receive real-time US stock price data (midprice only). All audio processing—including text-to-speech and audio tones—is generated locally on your device. No audio or personal data is sent back to the server.</p>
+
+    <h2>3. Information We Collect</h2>
+
+    <p><strong>a. Data Stored Locally on Your Device (Never Transmitted)</strong></p>
+    <ul>
+        <li><strong>User Preferences:</strong> Stored in <code>%LOCALAPPDATA%\MarketPulse\settings.json</code> including volume levels, favorite stocks, selected audio instruments/scales, and server URL.</li>
+        <li><strong>Error Logs:</strong> Stored in <code>%LOCALAPPDATA%\MarketPulse\errors.jsonl</code> with a 512 KB cap and auto-rotation. Stack traces have personal file paths sanitized. These logs remain on your device and are never transmitted to any server.</li>
+        <li><strong>Debug Logs:</strong> Only in DEBUG builds (not production/Store builds), stored in <code>%USERPROFILE%\.claude\logs\marketpulse\</code>.</li>
+    </ul>
+
+    <p><strong>b. Data Processed by Backend Server (Fly.io, Amsterdam, Netherlands)</strong></p>
+    <ul>
+        <li><strong>IP Address:</strong> Visible to our infrastructure provider (Fly.io) and Socket.io during WebSocket connections. IP addresses are logged in ephemeral server console output only when authentication fails. These logs are not persisted to any database.</li>
+        <li><strong>Socket ID:</strong> A randomly generated session identifier assigned by Socket.io, logged for connection/disconnection/subscription events. Has no personal meaning.</li>
+        <li><strong>Subscribed Symbols:</strong> Which stock ticker(s) you are watching, used to route price data to your device.</li>
+    </ul>
+
+    <p><strong>c. Data We Do NOT Collect</strong></p>
+    <p>MarketPulse does not collect any Personally Identifiable Information (PII). We do not collect or store:</p>
+    <ul>
+        <li>Names, email addresses, phone numbers, or postal addresses</li>
+        <li>Financial information or payment details</li>
+        <li>Device identifiers or fingerprints</li>
+        <li>Location data or GPS coordinates</li>
+        <li>Analytics, telemetry, or usage statistics</li>
+        <li>Crash reports sent to external services</li>
+        <li>Advertising identifiers or tracking cookies</li>
+    </ul>
+    <p>The Application does not currently require user accounts.</p>
+
+    <h2>4. How We Use Information</h2>
+    <ul>
+        <li><strong>Stock Subscriptions:</strong> To deliver the requested real-time price data</li>
+        <li><strong>IP Addresses:</strong> Visible only in ephemeral server logs for security monitoring (authentication failures)</li>
+        <li><strong>Local Settings:</strong> To restore your preferences between sessions</li>
+        <li><strong>Local Error Logs:</strong> For user-side troubleshooting only</li>
+    </ul>
+
+    <h2>5. Data Sharing</h2>
+    <p>We do not sell, share, rent, or otherwise transfer any data to third parties. Our infrastructure provider (Fly.io, based in the EU) processes network traffic as part of normal server operation. No third-party analytics, advertising, or tracking services are integrated into MarketPulse.</p>
+
+    <h2>6. Data Storage and Security</h2>
+    <ul>
+        <li><strong>Client Data:</strong> Stored locally on your device in standard Windows application data directories</li>
+        <li><strong>Backend Server:</strong> Hosted on Fly.io in Amsterdam, Netherlands (EU)</li>
+        <li><strong>Encryption:</strong> WebSocket connections use TLS encryption (wss://)</li>
+        <li><strong>Server Logs:</strong> Ephemeral (container stdout), not persisted to any database</li>
+    </ul>
+
+    <h2>7. GDPR Compliance (EU Users)</h2>
+    <p>Since our backend is hosted in Amsterdam (EU), the General Data Protection Regulation (GDPR) applies. Our legal basis for processing is <strong>legitimate interest</strong> (providing the requested service). We practice data minimization—only data necessary for service operation is processed. No personal data is stored in any database. Data controller: Anaxares, contact: <a href="mailto:jb-it@gmx.de">jb-it@gmx.de</a>. No Data Protection Officer is required (small-scale processing, no special categories of data).</p>
+
+    <h2>8. Permissions Explained</h2>
+    <ul>
+        <li><strong>internetClient:</strong> Required to connect to the backend server for stock price data</li>
+        <li><strong>backgroundMediaPlayback:</strong> Required to continue playing audio price announcements when the app is not in the foreground</li>
+        <li><strong>runFullTrust:</strong> Required by the WinUI3/.NET desktop application framework. The app does not use this capability to access files or resources beyond its own data directories.</li>
+    </ul>
+
+    <h2>9. Future Changes</h2>
+    <p>We plan to add user accounts (email, authentication) and subscription billing (via Stripe) in a future update. When implemented, this privacy policy will be updated <strong>before</strong> those features launch. Significant changes will be communicated through the Microsoft Store update notes.</p>
+
+    <h2>10. Children's Privacy</h2>
+    <p>MarketPulse is designed for adults interested in financial markets and is <strong>not intended for use by children under the age of 13</strong> (or the applicable local age threshold). We do not knowingly collect any information from children. If we become aware that a child has provided us with information, we will take steps to delete it.</p>
+
+    <h2>11. Changes to This Privacy Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. If we make changes, we will update the "Effective Date" at the top of this policy. We encourage you to review this Privacy Policy periodically. Significant changes may also be noted in the Application's update description in the Microsoft Store.</p>
+
+    <h2>12. Contact Us</h2>
+    <p>If you have any questions, concerns, or comments about this Privacy Policy or our privacy practices, please contact us at:<br>
+    <a href="mailto:jb-it@gmx.de">jb-it@gmx.de</a></p>
+
+</body>
+</html>
